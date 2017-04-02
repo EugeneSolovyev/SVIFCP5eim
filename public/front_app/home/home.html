@@ -1,0 +1,46 @@
+<div class="container-fluid app_body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>What I have to do today?</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default" ng-repeat="item in vm.init_notes">
+                <div class="panel-heading">{{item.title}}</div>
+                <div class="panel-body" ng-bind-html="item.text"></div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Exchange Rate</div>
+                <div class="panel-body course">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Currency</th>
+                            <th>Rate/USD</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in vm.interested_rates">
+                            <td>{{vm.today}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.rate}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <input type="numer" ng-model="vm.usd" class="form-control" placeholder="USD">
+                    <i class="fa fa-arrows-h" aria-hidden="true"></i>
+                    <select class="form-control">
+                        <option ng-repeat="course in vm.interested_rates" value="{{course.rate}}">{{course.name}}</option>
+                    </select>
+                    <div class="result">{{(vm.usd * course.rate) || 0}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
