@@ -52,7 +52,7 @@
 
         function updateCard(card) {
             card.editable = false;
-            card.date = moment().unix();
+            card.date = moment(new Date()).unix();
             $http.put('http://localhost:8000/update_note/' + card._id, card);
         }
 
