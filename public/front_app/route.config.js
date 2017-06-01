@@ -3,7 +3,7 @@
 
     angular.module('notificationApp').config(routeApp);
     
-    function routeApp($stateProvider) {
+    function routeApp($stateProvider, $urlRouterProvider) {
         $stateProvider.state('home', {
             name: 'home',
             url: '/home',
@@ -14,5 +14,6 @@
             url: '/notification',
             template: '<notification-directive></notification-directive>'
         });
+        $urlRouterProvider.otherwise('/notification');
     }
 })();
